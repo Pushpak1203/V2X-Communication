@@ -1,0 +1,68 @@
+AutonomousVehicleProject/
+├── CARLA_SUMO_Integration/
+│   ├── CARLA/                           # CARLA simulator binary
+│   │   ├── CarlaUE4.exe                 # Windows executable to launch CARLA
+│   │   └── ...                          # CARLA assets and maps
+│   │
+│   ├── SUMO/                            # SUMO simulation files
+│   │   ├── carla.net.xml                # SUMO network from CARLA OpenDRIVE
+│   │   ├── routes.rou.xml               # Vehicle route definitions
+│   │   ├── simulation.sumocfg           # SUMO simulation config
+│   │   └── additional.add.xml           # Optional: traffic light logic, etc.
+│   │
+│   ├── integration/                     # Scripts to sync CARLA ↔ SUMO
+│   │   ├── run_carla_sumo.py            # Main bridge script
+│   │   ├── sumo_vehicle_manager.py      # Vehicle creation and control
+│   │   ├── sync_utils.py                # Utility functions for time/actors
+│   │   └── readme.md
+│   │
+│   ├── config/                          # System parameters for both platforms
+│   │   ├── vehicle_settings.yaml        # Vehicle-specific simulation settings
+│   │   ├── sim_params.yaml              # Timing, tick rate, sync options
+│   │   └── sumo_colors.json             # Visual configurations for SUMO vehicles
+│   │
+│   ├── logs/                            # Output from bridge and SUMO runs
+│   │   ├── sync_logs.txt
+│   │   ├── vehicle_status.csv
+│   │   └── delay_trace.json
+│   │
+│   └── README.md
+│
+└── ObstacleDetectionSimulation/
+    ├── simulation/                     # Simulation scenario launcher
+    │   ├── run_sim.py                  # Main entry point for simulation
+    │   ├── scenario_config.json        # Vehicle count, sensor range, etc.
+    │   └── sim_environment.py          # Connects modules and steps execution
+    │
+    ├── sensors/                        # Simulated sensor systems
+    │   ├── virtual_lidar.py            # LIDAR-based obstacle recognition
+    │   ├── virtual_camera.py           # Optional: camera simulation logic
+    │   └── detection_logic.py          # Unified obstacle classification system
+    │
+    ├── communication/                 # V2V messaging module
+    │   ├── broadcaster.py              # Message sending logic
+    │   ├── receiver.py                 # Vehicle receives and decodes messages
+    │   ├── encryption.py               # Encrypt messages for simulation security
+    │   └── message_format.py           # Standard schema for obstacle alerts
+    │
+    ├── decision_engine/               # Vehicle response after receiving alert
+    │   ├── response_planner.py         # High-level response planner
+    │   ├── behavior_model.py           # Emergency brake, reroute, slowdown
+    │   └── decision_utils.py           # Threshold logic, policy handlers
+    │
+    ├── evaluation/                    # Performance analysis tools
+    │   ├── metrics.py                  # Packet delivery, response time, etc.
+    │   ├── logger.py                   # Logs simulation activities
+    │   └── visualization.py            # Plotting graphs, statistics
+    │
+    ├── config/                        # Environment and parameter settings
+    │   ├── v2v_settings.yaml           # Communication radius, delay, drop-rate
+    │   ├── sim_params.yaml             # Number of vehicles, area, run-time
+    │   └── thresholds.yaml             # Reaction thresholds, priorities
+    │
+    ├── logs/                          # Runtime output of obstacle interactions
+    │   ├── detection_events.csv
+    │   ├── communication_log.txt
+    │   └── decisions_summary.json
+    │
+    └── README.md
